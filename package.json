@@ -1,0 +1,14 @@
+{
+  "name": "grunt-intro",
+  "version": "0.0.0",
+  "description": "Grunt introduction for Human Talks Nantes",
+  "main": "grunt-intro.js",
+  "keywords": [
+    "grunt",
+    "introduction",
+    "humantalks",
+    "nantes"
+  ],
+  "author": "rbelouin <rodolphe.belouin@gmail.com>",
+  "license": "BSD"
+}
