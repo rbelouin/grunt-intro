@@ -1,0 +1,24 @@
+{
+  "name": "grunt-intro",
+  "version": "0.0.0",
+  "authors": [
+    "rbelouin <rodolphe.belouin@gmail.com>"
+  ],
+  "description": "Grunt introduction for Human Talks Nantes",
+  "main": "grunt-intro.js",
+  "moduleType": [
+    "globals"
+  ],
+  "keywords": [
+    "grunt",
+    "introduction",
+    "humantalks",
+    "nantes"
+  ],
+  "license": "BSD",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components"
+  ]
+}
