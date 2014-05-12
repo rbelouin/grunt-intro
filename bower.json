@@ -20,5 +20,8 @@
     "**/.*",
     "node_modules",
     "bower_components"
-  ]
+  ],
+  "dependencies": {
+    "impress.js": "~0.5.3"
+  }
 }
