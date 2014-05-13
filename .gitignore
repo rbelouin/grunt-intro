@@ -3,4 +3,5 @@
 /bower_components
 /dependencies.js
 /grunt-intro.js
+/grunt-intro.min.js
 /node_modules

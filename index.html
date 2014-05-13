@@ -7,25 +7,91 @@
   <link rel="stylesheet" type="text/css" media="all" href="all.css" />
 </head>
 <body>
-  <div id="impress">
-    <section class="step">
+  <div id="impress" data-transition-duration="500">
+    <section class="step main">
       <h2>Human Talks</h2>
       <div>Mardi, 13 mai 2014</div>
     </section>
 
-    <section class="step">
+    <section class="step author">
       <h2>Rodolphe Belouin</h2>
+
+      <img src="img/rbelouin.jpg" alt="rbelouin's picture" />
+      <a href="https://twitter.com/rbelouin"><span class="ion-social-twitter"></span> @rbelouin</a>
+      <a href="https://github.com/rbelouin"><span class="ion-social-github"></span> rbelouin</a>
     </section>
 
     <section class="step">
-      <h1>Grunt</h1>
+      <img src="img/grunt.svg" alt="grunt logo" />
     </section>
 
-    <section class="step">
-      <h3>Automate everything</h3>
+    <section class="step main">
+      <h2>What is Grunt?</h2>
+      <div>Baby don't hurt me, no more</div>
+    </section>
+
+    <section class="step automate">
+      <h2>Automate everything</h2>
+    </section>
+
+    <section class="step terminal-tasks">
+      <h2>Much pain</h2>
+      <h2>Very human error</h2>
+    </section>
+
+    <section class="step main">
+      <h2>How does it work?</h2>
+    </section>
+
+    <section class="step main">
+      <h2>Everything is a task, and each task is a plugin</h2>
+      <div>&gt; 2800 plugins</div>
+    </section>
+
+    <section class="step terminal">
+      <code style="margin-top: 250px">
+npm install -g grunt-cli <span class="terminal-comment"># Install the command-line tool</span>
+npm install --save-dev grunt <span class="terminal-comment"># Install grunt</span>
+npm install --save-dev &lt;grunt plugin&gt; <span class="terminal-comment"># Install a grunt plugin</span>
+      </code>
+    </section>
+
+    <section class="step terminal">
+      <code>
+<span class="terminal-comment">/* Gruntfile.js: grunt configuration */</span>
+module.exports = function(grunt) {
+
+  <span class="terminal-comment">/* Configuration for grunt plugins */</span>
+  grunt.initConfig({
+
+    <span class="terminal-comment">/* Configuration for grunt-contrib-concat plugin */</span>
+    TASK: {
+      TARGET: {
+        &lt;options&gt;
+      }
+    },
+
+  });
+
+  <span class="terminal-comment">/* Plugins loading */</span>
+  grunt.loadNpmTasks("GRUNT_PLUGIN");
+
+  <span class="terminal-comment">/* Task alias */</span>
+  grunt.registerTask("default", ["TASK1", "TASK2", …]);
+};
+      </code>
+    </section>
+
+    <section class="step terminal">
+      <code style="margin-top: 180px">
+grunt less
+grunt uglify:prod
+grunt uglify less
+grunt
+      </code>
     </section>
   </div>
 
-  <script type="text/javascript" src="grunt-intro.js"></script>
+  <script type="text/javascript" src="grunt-intro.min.js"></script>
 </body>
 </html>

@@ -29,6 +29,27 @@ module.exports = function(grunt) {
           "all.css": "less/all.less"
         }
       }
+    },
+
+    /* Configuration for grunt-contrib-uglify plugin */
+    uglify: {
+      all: {
+        files: {
+          "grunt-intro.min.js": ["grunt-intro.js"]
+        }
+      }
+    },
+
+    /* Configuration for grunt-contrib-watch plugin */
+    watch: {
+      src: {
+        files: "src/**/*.js",
+        tasks: ["concat", "uglify"]
+      },
+      less: {
+        files: "less/**/*.less",
+        tasks: ["less"]
+      }
     }
 
   });
@@ -37,7 +58,9 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks("grunt-bower-concat");
   grunt.loadNpmTasks("grunt-contrib-concat");
   grunt.loadNpmTasks("grunt-contrib-less");
+  grunt.loadNpmTasks("grunt-contrib-uglify");
+  grunt.loadNpmTasks("grunt-contrib-watch");
 
   /* Task alias */
-  grunt.registerTask("default", ["bower_concat", "concat", "less"]);
+  grunt.registerTask("default", ["bower_concat", "concat", "uglify", "less"]);
 };
