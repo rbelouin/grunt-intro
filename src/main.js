@@ -4,3 +4,8 @@ $("#impress section.step").each(function(index, elem) {
 
 /* Start Impress.js */
 impress().init();
+
+$(document).contextmenu(function(e) {
+  e.preventDefault();
+  impress().next();
+});
