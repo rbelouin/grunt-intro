@@ -64,7 +64,6 @@ module.exports = function(grunt) {
   <span class="terminal-comment">/* Configuration for grunt plugins */</span>
   grunt.initConfig({
 
-    <span class="terminal-comment">/* Configuration for grunt-contrib-concat plugin */</span>
     TASK: {
       TARGET: {
         &lt;options&gt;
@@ -89,6 +88,179 @@ grunt uglify:prod
 grunt uglify less
 grunt
       </code>
+    </section>
+
+    <section class="step main">
+      <h2>Grunt plugins</h2>
+    </section>
+
+    <section class="step main">
+      <h2>Javascript minification</h2>
+      <code>npm install --save-dev grunt-contrib-uglify</code>
+    </section>
+
+    <section class="step terminal">
+      <code>
+<span class="terminal-comment">/* Gruntfile.js: grunt configuration */</span>
+module.exports = function(grunt) {
+
+  <span class="terminal-comment">/* Configuration for grunt plugins */</span>
+  grunt.initConfig({
+
+    <span class="terminal-comment">/* Configuration for grunt-contrib-uglify plugin */</span>
+    uglify: {
+      all: {
+        files: {
+          "grunt-intro.min.js": ["grunt-intro.js"]
+        }
+      }
+    },
+
+  });
+
+  <span class="terminal-comment">/* Plugins loading */</span>
+  grunt.loadNpmTasks("grunt-contrib-uglify");
+
+  <span class="terminal-comment">/* Task alias */</span>
+  grunt.registerTask("default", ["uglify"]);
+};
+      </code>
+    </section>
+
+    <section class="step main">
+      <h2>Less compilation</h2>
+      <code>npm install --save-dev grunt-contrib-less</code>
+    </section>
+
+    <section class="step terminal">
+      <code>
+<span class="terminal-comment">/* Gruntfile.js: grunt configuration */</span>
+module.exports = function(grunt) {
+
+  <span class="terminal-comment">/* Configuration for grunt plugins */</span>
+  grunt.initConfig({
+
+    <span class="terminal-comment">/* Configuration for grunt-contrib-less plugin */</span>
+    less: {
+      all: {
+        files: {
+          "all.css": "less/all.less"
+        }
+      }
+    },
+
+  });
+
+  <span class="terminal-comment">/* Plugins loading */</span>
+  grunt.loadNpmTasks("grunt-contrib-less");
+
+  <span class="terminal-comment">/* Task alias */</span>
+  grunt.registerTask("default", ["less"]);
+};
+      </code>
+    </section>
+
+    <section class="step main">
+      <h2>Continuous build</h2>
+      <code>npm install --save-dev grunt-contrib-watch</code>
+    </section>
+
+    <section class="step terminal">
+      <code style="margin-top: -40px">
+<span class="terminal-comment">/* Gruntfile.js: grunt configuration */</span>
+module.exports = function(grunt) {
+
+  <span class="terminal-comment">/* Configuration for grunt plugins */</span>
+  grunt.initConfig({
+
+    <span class="terminal-comment">/* Configuration for grunt-contrib-watch plugin */</span>
+    watch: {
+      javascript: {
+        files: ["src/**/*.js"],
+        tasks: ["TASK1"]
+      },
+      less: {
+        files: ["less/**/*.less"],
+        tasks: ["TASK2"]
+      }
+    },
+
+  });
+
+  <span class="terminal-comment">/* Plugins loading */</span>
+  grunt.loadNpmTasks("grunt-contrib-watch");
+
+  <span class="terminal-comment">/* Task alias */</span>
+  grunt.registerTask("default", ["watch"]);
+};
+      </code>
+    </section>
+
+    <section class="step main">
+      <h2>Creating your own tasks</h2>
+    </section>
+
+    <section class="step terminal">
+      <code>
+<span class="terminal-comment">/* Gruntfile.js: grunt configuration */</span>
+module.exports = function(grunt) {
+  var testServer = require("./tests/server.js");
+
+  <span class="terminal-comment">/* Configuration for grunt plugins */</span>
+  grunt.initConfig({
+    …
+  });
+
+  <span class="terminal-comment">/* Custom task */</span>
+  grunt.registerTask("start-server", "start server", function() {
+    testServer.start();
+  });
+
+  <span class="terminal-comment">/* Custom task */</span>
+  grunt.registerTask("stop-server", "stop server", function() {
+    testServer.stop();
+  });
+
+  <span class="terminal-comment">/* Task alias */</span>
+  grunt.registerTask("default", ["start-server", …, "stop-server"]);
+};
+      </code>
+    </section>
+
+    <section class="step terminal">
+      <code style="margin-top: -60px">
+module.exports = function(grunt) {
+  grunt.initConfig({
+    task: {
+      <span class="terminal-comment">/* Development configuration */</span>
+      dev: {
+        clean: false,
+        optimize: false
+      },
+      <span class="terminal-comment">/* Production configuration */</span>
+      prod: {
+        clean: true,
+        optimize: true
+      }
+    }
+  });
+
+  <span class="terminal-comment">/* Custom task */</span>
+  grunt.registerMultiTask("task", "do something", function() {
+    grunt.log.writeln("target: " + this.target);
+
+    <span class="terminal-comment">/* taskFunction({clean: …, optimize: …}) */</span>
+    taskFunction(this.data);
+  });
+
+  <span class="terminal-comment">/* Task alias */</span>
+  grunt.registerTask("default", ["task:dev"]);
+};
+      </code>
+    </section>
+
+    <section class="step main">
+      <h2>Questions?</h2>
     </section>
   </div>
 
